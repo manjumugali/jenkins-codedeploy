@@ -10,6 +10,7 @@ permissions:
     pattern: "**"
     owner: ubuntu
     group: ubuntu
+    mode: 777
 hooks:
   BeforeInstall:
     - location: scripts/clean_instance.sh
@@ -18,7 +19,7 @@ hooks:
   AfterInstall:
     - location: scripts/installDependecies.sh
       timeout: 300
-      runas: ubuntu
+      runas: root
     - location: scripts/startgunicorn.sh
       timeout: 300
       runas: ubuntu

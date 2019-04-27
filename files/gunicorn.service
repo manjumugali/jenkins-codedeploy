@@ -1,0 +1,10 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/ChatApp-Django
+ExecStart=/home/ubuntu/env/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/ChatApp-Django/ChatApp-Django.sock ChatApp-Django.wsgi:application
+[Install]
+WantedBy=multi-user.target

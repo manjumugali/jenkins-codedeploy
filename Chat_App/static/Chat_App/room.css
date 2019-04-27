@@ -1,0 +1,43 @@
+body
+{
+
+        background: url('images/chat.jpg');
+}
+h2
+{
+        font-family: Times New Roman, Times, serif;
+        color:#59755a;
+
+}
+label
+{
+        font-family: Times New Roman, Times, serif;
+        color:#3e3838;
+        font-size: 16px;
+}
+.container
+{
+  border-radius: 0px;
+  background-color:#f9f9f500;
+  padding: 20px;
+  width:300px;
+}
+
+input[type=text]
+{
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=button]
+{
+  background-color: #0a0a0a;
+  color: white;
+  padding: 10px 113px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

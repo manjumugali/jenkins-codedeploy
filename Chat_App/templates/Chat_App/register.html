@@ -1,0 +1,92 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'Chat_App/style.css' %}" xmlns="http://www.w3.org/1999/html"/>
+<html>
+    <body>
+        <center>
+        <form action="/adduser/" method="post" onsubmit="return validation()">
+            <div class="container">
+            {% csrf_token %}
+                <center><h1>Sign Up</h1></center>
+                <hr>
+                <span>{{ error }}</span>
+                <label><b>First_name:</b></label>
+                <input type="text" id="name" placeholder="first name" name="fname" required>
+                <span id="fnameerror"></span><br>
+
+                <label><b>Last_name:</b></label>
+                <input type="text" id="lname" placeholder="last name" name="lname" required>
+                <span id="lnameerror"></span><br>
+
+                <label><b>Email:</b></label>
+                <input type="text" placeholder="Enter Email" name="email" id="emailid" required><br>
+                <span id="emailid1"></span><br>
+                <label><b>Password:</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required id="pswd"><br>
+                <span id="passworderror"></span><br>
+                <label><b>Comform_Password:</b></label>
+                <input type="password" placeholder="conform Password" name="rpsw" id="pswd1"required >
+                <span id="password1error"></span><br><br>
+                <div class="clearfix">
+                    <button type="button" class="cancelbtn"><a href="/login/">login</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="signupbtn">Sign Up</button>
+                </div>
+            </div>
+            </form>
+            </center>
+        <script>
+            function validation()
+            {
+                var fname = document.getElementById('name').value;
+                var lname = document.getElementById('lname').value;
+                var email = document.getElementById('emailid').value;
+                var  password1 = document.getElementById('pswd').value;
+                var  password2 = document.getElementById('pswd1').value;
+                var letters = /^[A-Za-z]+$/;
+                if((fname.length < 3) || (fname.length > 20))
+                {
+                    document.getElementById('fnameerror').innerHTML ="** please fill name between 3 and 20";
+                    return false;
+                }
+
+                if(!fname.match(letters))
+                {
+                    document.getElementById('fnameerror').innerHTML ="**Please fill only only letters";
+                    return false;
+                }
+
+               if((lname.length < 3) || (lname.length > 20))
+                {
+                    document.getElementById('lnameerror').innerHTML ="** please fill name between 3 and 20";
+                    return false;
+                }
+
+                if(!lname.match(letters))
+                {
+                    document.getElementById('lnameerror').innerHTML ="**Please fill only letters";
+                    return false;
+                }
+
+                if((password1.length < 5) || (password1.length >10))
+                 {
+                    document.getElementById('passworderror').innerHTML ="**password should be less 10 characters and grater than 3 characters";
+                    return false;
+                 }
+
+                 if(password1 !== password2)
+                 {
+                    document.getElementById('password1error').innerHTML ="**password is not matching";
+                    return false;
+                 }
+
+                 var regemail = /[A-Za-z0-9_]{3,}@[A-Za-z]{2,}[.]{1}[A-Za-z.]{2,6}/;
+                 if(!email.match(regemail))
+                 {
+                    document.getElementById('emailid1').innerHTML ="**invalid email address format is(xxxx@xxx.xxx)";
+                    return false;
+                 }
+
+
+            }
+        </script>
+    </body>
+</html>

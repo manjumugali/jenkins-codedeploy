@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'Chat_App/loginstyle.css' %}" xmlns="http://www.w3.org/1999/html"/>
+    </head>
+    <body>
+        <center>
+                <form action="/chatmsg/" method= "post" onsubmit="return validation()">
+                    {% csrf_token %}
+                    <div class="container">
+                        <center><h1>login</h1></center>
+                            <hr>
+                                <p><b>{{error}}</b></p>
+                                <label><b>Username:</b></label>
+                                <input type="text" placeholder="username" name="uname" id="email" required>
+                                <label><b>Password:</b></label>
+                                <input type="password" placeholder="password" name="psw" id="psw1" required>
+                                <h2 id="passworderror"></h2><br>
+                                <button type="button" class="cancelbtn"><a href="/register/">Register</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="submit" class="login">Login</button>
+                    </div>
+                </form>
+       </center>
+
+        <script>
+            function validation()
+                {
+                    var emailid = document.getElementById('email').value;
+                    var password1 = document.getElementById('psw1').value;
+                    if((password1.length < 5) || (password1.length >10))
+                    {
+                        document.getElementById('passworderror').innerHTML ="**password length should be <10 and >5 characters";
+                        return false;
+                    }
+                }
+       </script>
+    </body>
+</html>

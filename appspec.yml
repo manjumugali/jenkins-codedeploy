@@ -15,11 +15,14 @@ hooks:
     - location: scripts/clean_instance.sh
       timeout: 300
       runas: ubuntu
+      mode: 777
   AfterInstall:
     - location: scripts/installDependecies.sh
       timeout: 300
       runas: ubuntu
+      mode: 777
     - location: scripts/startgunicorn.sh
       timeout: 300
       runas: ubuntu
+      mode: 777
 

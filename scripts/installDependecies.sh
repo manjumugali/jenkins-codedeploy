@@ -5,8 +5,9 @@ virtualenv --python=python3 /home/ubuntu/venv
 sudo chown ubuntu:ubuntu /home/ubuntu/ChatApp-Django
 source /home/ubuntu/venv/bin/activate
 pip3 install -r /home/ubuntu/ChatApp-Django/requirements.txt
-pip3 install django bcrypt django-extensions 
-sudo cp /home/ubuntu/ChatApp-Django/files/gunicorn.service /etc/systemd/system/
+pip3 install django bcrypt django-extensions
+cd /home/ubuntu/ChatApp-Django
+python3 manage.py collectstatic
 sudo systemctl daemon-reload
 sudo systemctl start gunicorn
 sudo systemctl enable gunicorn

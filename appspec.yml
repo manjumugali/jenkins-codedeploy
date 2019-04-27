@@ -1,28 +1,19 @@
 version: 0.0
 os: linux
 files:
-  - source: /files/gunicorn.service
-    destination: /etc/systemd/system/
   - source: /
-    destination: /home/ubuntu/ChatApp-Django
+    destination: /home/ubuntu/ChatApp-Django/
 permissions:
   - object: /home/ubuntu/ChatApp-Django
-    pattern: "**"
     owner: ubuntu
     group: ubuntu
 hooks:
   BeforeInstall:
     - location: scripts/clean_instance.sh
       timeout: 300
-      runas: ubuntu
+      runas: root
       mode: 777
   AfterInstall:
     - location: scripts/installDependecies.sh
       timeout: 300
       runas: ubuntu
-      mode: 777
-    - location: scripts/startgunicorn.sh
-      timeout: 300
-      runas: ubuntu
-      mode: 777
-

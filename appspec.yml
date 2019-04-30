@@ -1,8 +1,8 @@
 version: 0.0
 os: linux
 files:
-  - source: /files/gunicorn.service
-    destination: /etc/systemd/system/
+  #- source: /files/gunicorn.service
+   # destination: /etc/systemd/system/
   - source: /
     destination: /home/ubuntu/ChatApp-Django/
 permissions:
